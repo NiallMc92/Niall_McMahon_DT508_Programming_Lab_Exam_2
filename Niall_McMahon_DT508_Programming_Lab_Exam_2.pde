@@ -3,6 +3,7 @@
 // DT508 Programming Lab Test 2
 
 Plane plane;
+Person person;
 ArrayList<Clouds> clouds = new ArrayList<Clouds>();
 ArrayList<Bomb> bomb = new ArrayList<Bomb>();
 boolean dropped;
@@ -11,6 +12,7 @@ void setup()
 {
   size(500, 500);
   plane = new Plane(0, 25);
+  person = new Person(50, width / 2 + 100);
   skyX = 0;
   skyY = 0;
   skyW = width;
@@ -49,6 +51,9 @@ void draw()
     bomb.get(0).Render();
     bomb.get(0).Update();
   }
+  
+  person.Render();
+  person.Update();
 }
 
 void keyPressed()

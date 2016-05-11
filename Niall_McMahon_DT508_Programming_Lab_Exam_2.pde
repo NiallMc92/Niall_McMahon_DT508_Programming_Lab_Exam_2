@@ -4,6 +4,8 @@
 
 Plane plane;
 ArrayList<Clouds> clouds = new ArrayList<Clouds>();
+ArrayList<Bomb> bomb = new ArrayList<Bomb>();
+boolean dropped;
 
 void setup()
 {
@@ -13,6 +15,7 @@ void setup()
   skyY = 0;
   skyW = width;
   skyH = height * 0.5f;
+  dropped = false;
 }
 
 void draw()
@@ -30,4 +33,25 @@ void draw()
   
   plane.Render();
   plane.Update();
+  
+  if(keyPressed)
+  {
+    if(key == ' ')
+    {
+      dropped = true;
+    }
+  }
+  
+  if(dropped)
+  {
+    Bomb p = new Bomb(plane.pos.x, plane.pos.y);
+    bomb.add(p);
+    bomb.get(0).Render();
+    bomb.get(0).Update();
+  }
+}
+
+void keyPressed()
+{
+
 }

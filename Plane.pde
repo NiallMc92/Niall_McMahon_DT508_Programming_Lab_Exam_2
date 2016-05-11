@@ -10,7 +10,7 @@ class Plane
   float windowY;
   int windowW;
   int windowH;
-  float speed;
+  //float speed;
   
   Plane(float planeX, float planeY)
   {
@@ -23,12 +23,12 @@ class Plane
     windowY = pos.y + 5;
     windowW = 5;
     windowH = 5;
-    speed = 3;
+    //speed = 3;
   }
   
   void Update()
   {
-    pos.x += speed;
+    pos.add(forward);
     if(pos.x > width)
     {
       pos.x = 0 - planeW;

@@ -9,6 +9,7 @@ ArrayList<Bomb> bomb = new ArrayList<Bomb>();
 boolean dropped;
 boolean landed;
 boolean keys[] = new boolean [2000];
+float updatePosition;
 
 void setup()
 {
@@ -50,13 +51,23 @@ void draw()
     bomb.add(p);
     bomb.get(0).Render();
     bomb.get(0).Update();
+    updatePosition = bomb.get(0).pos.x;
   }
   
   if(landed)
     {
-      person.forward = new PVector(1, -1);
+      person.forward = new PVector(2, 0);
       person.pos.add(person.forward);
     }
+  
+  if(person.pos.x > updatePosition + 50)
+  {
+    landed = false;
+    dropped = false;
+    person.pos.x = 50;
+    person.pos.y = width / 2 + 100;
+    bomb.remove(0);
+  }
   
   person.Render();
   person.Update();

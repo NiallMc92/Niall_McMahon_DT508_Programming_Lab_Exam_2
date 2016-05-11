@@ -18,7 +18,7 @@ class Plane
     planeH = 20;
     halfPlaneW = 60;
     pos = new PVector(planeX, planeY);
-    forward = new PVector (1, 0);
+    forward = new PVector (2, 0);
     windowX = pos.x + 10;
     windowY = pos.y + 5;
     windowW = 5;

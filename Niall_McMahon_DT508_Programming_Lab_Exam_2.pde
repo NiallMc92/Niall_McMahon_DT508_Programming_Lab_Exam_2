@@ -7,6 +7,8 @@ Person person;
 ArrayList<Clouds> clouds = new ArrayList<Clouds>();
 ArrayList<Bomb> bomb = new ArrayList<Bomb>();
 boolean dropped;
+boolean landed;
+boolean keys[] = new boolean [2000];
 
 void setup()
 {
@@ -18,6 +20,7 @@ void setup()
   skyW = width;
   skyH = height * 0.5f;
   dropped = false;
+  landed = false;
 }
 
 void draw()
@@ -35,14 +38,11 @@ void draw()
   
   plane.Render();
   plane.Update();
-  
-  if(keyPressed)
-  {
-    if(key == ' ')
+
+    if(keys[0])
     {
       dropped = true;
     }
-  }
   
   if(dropped)
   {
@@ -52,11 +52,29 @@ void draw()
     bomb.get(0).Update();
   }
   
+  if(landed)
+    {
+      person.forward = new PVector(1, -1);
+      person.pos.add(person.forward);
+    }
+  
   person.Render();
   person.Update();
+  
 }
 
-void keyPressed()
+void keyPressed ()
 {
+  if(key == ' ')
+  {
+    keys[0] = true;
+  }
+}
 
+void keyReleased ()
+{
+  if(key == ' ')
+  {
+    keys[0] = false;
+  }
 }

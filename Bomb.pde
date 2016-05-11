@@ -19,15 +19,14 @@ class Bomb
   
   void Update()
   {
+    
     if(pos.y < height / 2)
     {
       pos.add(forward);
     }
-    
-    droppedPos = random(height / 2, height);
-    
-    if(pos.y > droppedPos)
+    else if(pos.y >= height / 2)
     {
+      landed = true;
       pos.add(stop);
     }
   }

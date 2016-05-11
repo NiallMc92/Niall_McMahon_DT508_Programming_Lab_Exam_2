@@ -9,6 +9,7 @@ class Person
   int armH;
   int legW;
   int legH;
+  PVector forward;
   
   Person (float personX, float personY)
   {

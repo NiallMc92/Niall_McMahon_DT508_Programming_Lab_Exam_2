@@ -10,6 +10,7 @@ boolean dropped;
 boolean landed;
 boolean keys[] = new boolean [2000];
 float updatePosition;
+PVector planePos;
 
 void setup()
 {
@@ -40,7 +41,7 @@ void draw()
   plane.Render();
   plane.Update();
 
-    if(keys[0])
+    if(keys[0] && dropped == false)
     {
       dropped = true;
     }
@@ -51,7 +52,7 @@ void draw()
     bomb.add(p);
     bomb.get(0).Render();
     bomb.get(0).Update();
-    updatePosition = bomb.get(0).pos.x;
+    updatePosition = bomb.get(0).pos.x; 
   }
   
   if(landed)
@@ -62,11 +63,11 @@ void draw()
   
   if(person.pos.x > updatePosition + 50)
   {
-    landed = false;
-    dropped = false;
     person.pos.x = 50;
     person.pos.y = width / 2 + 100;
     bomb.remove(0);
+    landed = false;
+    dropped = false;
   }
   
   person.Render();

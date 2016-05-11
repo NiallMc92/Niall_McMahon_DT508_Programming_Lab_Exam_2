@@ -10,6 +10,8 @@ class Person
   int legW;
   int legH;
   PVector forward;
+  PVector back;
+  PVector stop;
   
   Person (float personX, float personY)
   {
